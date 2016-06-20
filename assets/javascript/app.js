@@ -1,5 +1,17 @@
 var animals = [];
+function displaygifs() {
+	$('#gifArea').empty();
 
+	var word = $(this).attr('value');
+	console.log(word);
+	var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + word + '&limit=10&api_key=dc6zaTOxFJmzC'  
+	$.ajax({url: queryURL, method:'GET'})
+		.done(function(response){
+		console.log(response);
+
+	});	
+	return false;
+}	
 $("#smt").on('click', function() {
 	$('#buttonPrint').empty();
 	animals.push($('#search').val());
@@ -15,12 +27,5 @@ $("#smt").on('click', function() {
 	
 });
 
-$('.gifsearch').on('click', function(){
-	
-	$.ajax({url: queryURL, method:'GET'})
-		.done(function(response){
-		console.log(response);
-		
-	});	
+$(document).on('click', '.gifsearch', displaygifs);
 
-});
