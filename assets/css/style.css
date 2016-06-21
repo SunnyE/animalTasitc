@@ -1,0 +1,15 @@
+.gifclick {
+	display: inline-block;
+	width: 200px;
+}
+
+.searchedDiv {
+	display:inline-block;
+	margin-left: 20px;
+}
+.gifsearch {
+	margin-bottom: 10px;
+	color: yellow;
+	background-color:black;
+	padding: 10px;
+}

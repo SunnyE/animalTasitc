@@ -8,7 +8,7 @@ function displaygifs() {
 		.done(function(response){
 		console.log(response);
 		var gifs = response.data;
-
+		// for loop that creates a div and then appends a new gif from the response and prints the rating
 		for (var i=0; i<gifs.length; i++){
 			var gifDiv = $('<div>').attr('class', 'searchedDiv');
 			gifDiv.append($('<img>',{
@@ -18,7 +18,6 @@ function displaygifs() {
 				datastill: gifs[i].images.original_still.url,
 				dataAnimate: gifs[i].images.original.url,
 			}))
-			//gifDiv.append(img.attr('src', ))
 			gifDiv.append($('<p>').html('Rating: '+ gifs[i].rating))
 			$('#gifArea').append(gifDiv);
 		}
@@ -26,6 +25,8 @@ function displaygifs() {
 	});	
 	
 }	
+
+// function that starts and stops the playing of the gifs. 
 function startStop () {
 	var state = $(this).attr('state');
 	if(state === 'still') {
@@ -36,7 +37,7 @@ function startStop () {
 		$(this).attr('src', $(this).attr('datastill'));
 	}
 }
-
+// renders new buttons based on the value in the input box. 
 $("#smt").on('click', function() {
 	$('#buttonPrint').empty();
 	animals.push($('#search').val());
@@ -51,7 +52,7 @@ $("#smt").on('click', function() {
 	}
 	
 });
-
+// executes the display gifs function when the gifsearch buttons are clicked
 $(document).on('click', '.gifsearch', displaygifs);
-
+// executes startstop function when ever any of the gifs are clicked 
 $(document).on('click', '.gifclick', startStop);
